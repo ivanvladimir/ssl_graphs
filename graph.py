@@ -10,7 +10,6 @@ def myLogFormat(y,pos):
     formatstring = '{{:.{:1d}f}}'.format(decimalplaces)
     return formatstring.format(y)
 
-
 markers = ['o','v','8','s','<','p','^','h','>','D']
 
 geometry=df['Array Geometry'].unique()
@@ -19,9 +18,7 @@ cmap = plt.get_cmap('gnuplot')
 colors = [cmap(i) for i in np.linspace(0, 1, len(geometry))]
 
 df1=df.groupby(['Year','Number of microphones']).size().reset_index(name='count')
-
 volumen=[ (20*x)^2 for x in df1['count']]
-
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
 ax.scatter(df1['Year'],df1['Number of microphones'], s=volumen)
@@ -44,8 +41,6 @@ ax.set_yticks([0,1,2,3,4,5,6,7,8])
 plt.legend(loc=2)
 plt.show()
 
-
-print df['Maximum distance to source in practice'].unique()
 
 df1=df.groupby(['Year','Maximum distance to source in practice']).size().reset_index(name='count')
 fig = plt.figure()
